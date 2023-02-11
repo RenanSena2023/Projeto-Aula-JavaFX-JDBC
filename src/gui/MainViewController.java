@@ -25,17 +25,19 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemSellerAction() {
-		loadView("/gui/About.fxml");
+		
 	}
 	
 	@FXML
 	public void onMenuItemDepartmentAction() {
-		System.out.print("Action");
+		loadView("/gui/DepartmentListView.fxml");
+
 	}
 	
 	@FXML
 	public void onMenuItemAboutAction() {
-		System.out.print("Action");
+		loadView("/gui/About.fxml");
+		
 	}	
 	
 	@Override
@@ -45,7 +47,7 @@ public class MainViewController implements Initializable {
 	}
 	
 	
-	private void loadView(String absoluteName) {
+	private synchronized void loadView(String absoluteName) {
 		try {
 		FXMLLoader loader= new FXMLLoader(getClass().getResource(absoluteName));
 		VBox vBox = loader.load();
